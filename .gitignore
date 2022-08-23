@@ -1,0 +1,8 @@
+venv/*
+__pycache__/
+db.sqlite3
+*/media/**
+/dbdata/
+.DS_Store
+*.png
+*.jpg

@@ -1,0 +1,45 @@
+version: '3.7'
+services:
+  postit:
+    build: .
+    image: crypto
+    container_name: crypto
+    tty: true
+    stdin_open: true
+    restart: always
+    ports:
+      - 8000:8000
+    volumes:
+      - ./crypto/:/app/crypto/
+    depends_on:
+      - db
+    command: >
+      bash -c "python wait_for_postgres.py &&
+               python manage.py migrate &&
+               python manage.py collectstatic --noinput &&
+               gunicorn -b 0.0.0.0:8000 crypto.wsgi"
+  db:
+    image: postgres
+    container_name: crypto.postgres
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - ./dbdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: postit
+      POSTGRES_USER: postit
+      POSTGRES_PASSWORD: nesakysiu
+      POSTGRES_PORT: 5432
+    # env_file: # ir viskas is environment: dalies i ta faila per lygybes
+    #   - database.env
+  nginx:
+    build: ./nginx/
+    image: nginx
+    container_name: crypto.nginx
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./crypto/static:/app/static
+      - ./crypto/media:/app/media
