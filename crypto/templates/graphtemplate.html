@@ -1,0 +1,133 @@
+{% load static %}
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Choose your crypto trading strategy{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'admin/css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'admin/css/styles.css' %}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js" integrity="sha512-f5HTYZYTDZelxS7LEQYv8ppMHTZ6JJWglzeQmr0CVTS70vJgaJiIO15ALqI7bhsracojbXkezUIL+35UXwwGrQ==" crossorigin="anonymous"></script>
+
+    <style media="screen">
+      body{
+          background-color: var(--color-primary);
+          font-family: sans-serif;
+      }
+      .footer-content{
+          display: flex;
+          align-items: center
+          justify-content: center;
+          flex-direction: column;
+          text-align: center;
+      }
+      .footer-content h3{
+          font-size: 2.1rem;
+          font-weight: 500;
+          text-transform: capitalize;
+          line-height: 3rem;
+      }
+      .footer-content p{
+          max-width: 500px;
+          margin: 10px auto;
+          line-height: 28px;
+          font-size: 14px;
+          color: #cacdd2;
+      }
+      .socials{
+          list-style: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 1rem 0 0 0;
+      }
+      .socials li{
+          margin: 0px 10px;
+      }
+      .socials a{
+          text-decoration: none;
+          color: #fff;
+          border: 1.1px solid white;
+          padding: 5px;
+          border-radius: 50%;
+      }
+      .socials a i{
+          font-size: 1.8rem;
+          width: 20px;
+          transition: color .4s ease;
+      }
+      .socials a:hover i{
+          color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header-->
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+      {
+      "symbols": [
+        {
+          "proName": "BITSTAMP:BTCUSD",
+          "title": "Bitcoin"
+        },
+        {
+          "proName": "BITSTAMP:ETHUSD",
+          "title": "Ethereum"
+        },
+        {
+          "description": "Cardano",
+          "proName": "BINANCE:ADAUSDT"
+        },
+        {
+          "description": "Solana",
+          "proName": "FTX:SOLUSDT"
+        },
+        {
+          "description": "Cosmos",
+          "proName": "BINANCE:ATOMUSDT"
+        }
+      ],
+      "showSymbolLogo": true,
+      "colorTheme": "dark",
+      "isTransparent": true,
+      "displayMode": "adaptive",
+      "locale": "en"
+      }
+      </script>
+    </div>
+    <!-- TradingView Widget END -->
+    <header class="header" style="max-height:900px;">
+      <!-- Top Header -->
+      <div class="header__top">
+        <div>
+          <img src="{% static 'admin/images/logo5.png' %}" style="height:100px;width:auto;"/>
+        </div>
+      </div>
+        {% block turinys %}
+
+        {% endblock %}
+      <img class="background-item-1" src="{% static 'admin/images/background-item-1.svg' %}" alt="" />
+      <img class="background-item-2" src="{% static 'admin/images/background-item-2.svg' %}" alt="" />
+    </header>
+  </body>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content" >
+      <h4>You will be excited by choosing our platform!</h4>
+      <p>Call us: +37060060600<br>Location: Kauno g. 21, Vilnius</p>
+      <ul class="socials">
+        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+        <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+      </ul><br>
+    </div>
+  </footer>
+</html>

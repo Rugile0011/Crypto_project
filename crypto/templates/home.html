@@ -1,0 +1,25 @@
+{% extends 'template.html' %}
+{% load static %}
+{% block turinys %}
+<div class="grid grid--1x2 grid--centered grid-gap--small">
+  <div class="value-proposition" style="top:0px;">
+    <h3>Set your trading bot in 5 minutes:</h3>
+    <p class="value-proposition__text text text--small text--regular">
+      - choose your indicators (RSI, EMA, MACD, SMA)<br>
+      - choose your BUY parameters<br>
+      - choose your SELL parameters<br>
+      - combine multiple indicators strategies<br>
+      - Set a trading bot duration <br>
+      <h4>Your trading bot will trade according your choosen strategy. Enjoy your free time while making profits! </h4>
+    </p><br>
+    <button class="value-proposition__button btn btn--flex btn--accent" onclick="location.href='{% url 'login' %}';">
+      <span class="text--standart text--medium">Try for FREE</span>
+      <div class="chiron-icon-container">
+        <img src="{% static 'admin/images/chevron-right.svg' %}" alt="Right Icon" />
+      </div>
+    </button>
+  </div>
+  <img src="{% static 'admin/images/btc-illustration.svg' %}" alt="Bitcoin illustration" class="btc-illustration" data-rellax-horizontal-speed="-2" data-rellax-vertical-scroll-axis="x"/>
+</div>
+
+{% endblock turinys %}

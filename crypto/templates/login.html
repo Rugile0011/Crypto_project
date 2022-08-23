@@ -1,0 +1,22 @@
+{% extends 'template.html' %}
+{% load static %}
+{% block turinys %}
+<div align="center">
+    <h3>Login</h3>
+    <form action="" method="POST">
+        <table width="300">
+            {% csrf_token %}
+            {% for field in form %}
+            <div>
+                <tr>
+                    <th align="left">{{ field.label }}:</th>
+                    <th>{{ field }}</th>
+                </tr>
+            </div>
+            {% endfor %}
+        </table>
+        <button type="submit">Login</button>
+    </form>
+    <p style="font-size:small;">Don't have an account? <a href="{% url 'register' %}">Signup here</a></p>
+</div>
+{% endblock turinys %}

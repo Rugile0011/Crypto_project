@@ -1,0 +1,56 @@
+{% extends 'template.html' %}
+{% load static %}
+{% block turinys %}
+
+<div class="grid grid--1x2 grid--centered grid-gap--small">
+  <div class="value-proposition" >
+    <h3>Trading strategy example:</h3><br>
+      <h4>Buy when:</h4>
+      <p class="value-proposition__text text text--small text--regular">
+      - price is below weekly EMA200<br>
+      - RSI is below 30<br>
+      - daily volume is 50% higher then average<br>
+      <h4>Sell when:</h4>
+      <p class="value-proposition__text text text--small text--regular">
+      - RSI is higher than 80<br>
+      - price is higher than weekly EMA21<br>
+      - price 3 weeks makes no new high<br></p>
+  </div>
+  <!-- TradingView Widget BEGIN -->
+  <div class="tradingview-widget-container">
+    <div id="tradingview_a22a0"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+    new TradingView.widget(
+    {
+    "width": 650,
+    "height": 500,
+    "symbol": "BINANCE:BTCUSDT",
+    "interval": "W",
+    "timezone": "Europe/Vilnius",
+    "theme": "dark",
+    "style": "1",
+    "locale": "en",
+    "toolbar_bg": "#f1f3f6",
+    "enable_publishing": false,
+    "hide_top_toolbar": false,
+    "hide_legend": false,
+    "allow_symbol_change": true,
+    "isTransparent": true,
+    "studies_overrides": {
+              "moving average exponential.length": 200
+            },
+    "studies": [
+      "EMA200@tv-basicstudies",
+      "MAExp@tv-basicstudies",
+      "RSI@tv-basicstudies"
+    ],
+    "container_id": "tradingview_a22a0"
+  }
+    );
+    </script>
+  </div>
+<!-- TradingView Widget END -->
+</div>
+
+{% endblock turinys %}

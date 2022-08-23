@@ -1,0 +1,26 @@
+{% extends 'template.html' %}
+{% load static %}
+{% block turinys %}
+<div align="center">
+    <h3 >Register here:</h3>
+    <hr style="width:30%;">
+    <form action=" " method="POST">
+        <table border="1" width="300">
+            {% csrf_token %}
+            
+            {% for field in form %}
+            <div>
+                <tr>
+                    <th align="left">{{ field.label }}:</th>
+                    <th>{{ field }}</th>
+                </tr>
+                {% for error in field.errors %}
+                    <small style="color: red">{{ error }}</small>
+                {% endfor %}
+            </div>
+            {% endfor %} 
+        </table>
+    <button type="submit">Register</button>
+    </form>
+</div>
+{% endblock turinys %}
